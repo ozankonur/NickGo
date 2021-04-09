@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NickGo</string>
+    <string name="error">Error</string>
+    <string name="error_text">Connection failed.</string>
+    <string name="accept">Okay</string>
+    <string name="send">Send</string>
+    <string name="enter_message">Enter Message</string>
+    <string name="continue_button">Continue</string>
+    <string name="welcome_to_nick_chat">WELCOME</string>
+</resources>

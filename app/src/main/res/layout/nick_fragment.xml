@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.okonur.nickgo.framework.home.ui.NickViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayoutNick"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".framework.home.ui.NickFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:text="@string/welcome_to_nick_chat"
+            android:textFontWeight="500"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/nickArea"
+            app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@id/guidelineLeft" />
+
+        <LinearLayout
+            android:id="@+id/nickArea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nickEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@={viewmodel.nickName}" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continueButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="@{viewmodel.isValidNick}"
+                android:text="@string/continue_button" />
+        </LinearLayout>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/nickCircularProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nickArea" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="100dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

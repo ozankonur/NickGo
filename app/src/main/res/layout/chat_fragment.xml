@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.okonur.nickgo.framework.chat.ui.ChatViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".framework.chat.ui.ChatFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messageList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/texture"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/circularProgressIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/reply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:layout_marginStart="16dp"
+                android:id="@+id/editMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/buttonSend"
+                android:background="@android:color/transparent"
+                android:hint="@string/enter_message"
+                android:text="@={viewmodel.userMessage}"
+                android:inputType="text"
+                android:maxLines="6"
+                tools:ignore="Autofill" />
+
+            <Button
+                android:id="@+id/buttonSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:onClick="@{() -> viewmodel.pushMessage()}"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/send"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
