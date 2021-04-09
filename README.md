@@ -1,6 +1,6 @@
 # NickGo
 - MVVM Architecture
-- Repository -> Cache & Network Layers
+- Repository & Cache & Network Layers
 - Hilt for DI
 - Navigation Component for navigation
 - Room DB for caching
